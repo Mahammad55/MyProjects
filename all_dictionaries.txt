@@ -1,0 +1,4 @@
+az - eng
+az - rus
+eng - az
+az - frans
