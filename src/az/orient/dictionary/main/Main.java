@@ -35,7 +35,7 @@ public class Main {
         String result = "";
         String username, password, fromLanguage, toLanguage, firstWord, word, secondWord, filePath;
         int response;
-        List<String> listDictionary;
+        List<String> listDictionary,listWords;
         try {
             ExtraMethod.anonymousArray(new String[]{"Select the role", "1. Admin", "2. User"});
             switch (sc.nextInt()) {
@@ -58,7 +58,7 @@ public class Main {
                                     switch (sc.nextInt()) {
                                         case 1:
                                             System.out.println("Current dictionaries in the file");
-                                            listDictionary = Dictionary.showCurrentDictionaries(ALL_DICTIONARY_NAMES_PATH);
+                                            listDictionary = Dictionary.showCurrentInformation(ALL_DICTIONARY_NAMES_PATH);
                                             listDictionary.forEach(System.out::println);
 
                                             System.out.println("Creating a new dictionary");
@@ -72,7 +72,7 @@ public class Main {
                                             break;  //case1
                                         case 2:
                                             System.out.println("Current dictionaries in the file");
-                                            listDictionary = Dictionary.showCurrentDictionaries(ALL_DICTIONARY_NAMES_PATH);
+                                            listDictionary = Dictionary.showCurrentInformation(ALL_DICTIONARY_NAMES_PATH);
                                             listDictionary.forEach(System.out::println);
 
                                             System.out.println("Which dictionary do you want to add a word to?");
@@ -83,6 +83,11 @@ public class Main {
                                             filePath = fromLanguage + "_" + toLanguage + ".txt";
                                             response = Dictionary.check(filePath, ALL_DICTIONARY_NAMES_PATH);
                                             if (response == 1) {
+                                                System.out.println();
+                                                System.out.println("Current words in dictionary");
+                                                listWords=Dictionary.showCurrentInformation(filePath);
+                                                listWords.forEach(System.out::println);
+                                                System.out.println();
                                                 System.out.print("Enter " + fromLanguage + " word: ");
                                                 firstWord = sc.next();
                                                 System.out.print("Enter " + toLanguage + " word: ");
@@ -97,7 +102,7 @@ public class Main {
                                             break;  //case2
                                         case 3:
                                             System.out.println("Which dictionary you want to remove the word from");
-                                            listDictionary = Dictionary.showCurrentDictionaries(ALL_DICTIONARY_NAMES_PATH);
+                                            listDictionary = Dictionary.showCurrentInformation(ALL_DICTIONARY_NAMES_PATH);
                                             listDictionary.forEach(System.out::println);
 
                                             System.out.print("Enter first language: ");
@@ -107,8 +112,11 @@ public class Main {
                                             filePath = fromLanguage + "_" + toLanguage + ".txt";
                                             response = Dictionary.check(filePath, ALL_DICTIONARY_NAMES_PATH);
                                             if (response == 1) {
+                                                System.out.println();
                                                 System.out.println("Current words in dictionary");
-                                                Dictionary.showWords(filePath);
+                                                listWords=Dictionary.showCurrentInformation(filePath);
+                                                listWords.forEach(System.out::println);
+                                                System.out.println();
                                                 System.out.print("Enter " + fromLanguage + " word: ");
                                                 word = sc.next();
                                                 Dictionary.removeWordFromDic(word, filePath);
@@ -120,7 +128,7 @@ public class Main {
                                             break; //case3
                                         case 4:
                                             System.out.println("Which dictionary you want to change the word from");
-                                            listDictionary = Dictionary.showCurrentDictionaries(ALL_DICTIONARY_NAMES_PATH);
+                                            listDictionary = Dictionary.showCurrentInformation(ALL_DICTIONARY_NAMES_PATH);
                                             listDictionary.forEach(System.out::println);
 
                                             System.out.print("Enter first language: ");
@@ -130,8 +138,11 @@ public class Main {
                                             filePath = fromLanguage + "_" + toLanguage + ".txt";
                                             response = Dictionary.check(filePath, ALL_DICTIONARY_NAMES_PATH);
                                             if (response == 1) {
+                                                System.out.println();
                                                 System.out.println("Current words in dictionary");
-                                                Dictionary.showWords(filePath);
+                                                listWords=Dictionary.showCurrentInformation(filePath);
+                                                listWords.forEach(System.out::println);
+                                                System.out.println();
                                                 System.out.print("Enter " + fromLanguage + " word: ");
                                                 firstWord = sc.next();
                                                 System.out.print("Enter the word to change: ");
@@ -183,12 +194,12 @@ public class Main {
                         switch (sc.nextInt()) {
                             case 1:
                                 System.out.println("Current dictionaries in the file");
-                                listDictionary = Dictionary.showCurrentDictionaries(ALL_DICTIONARY_NAMES_PATH);
+                                listDictionary = Dictionary.showCurrentInformation(ALL_DICTIONARY_NAMES_PATH);
                                 listDictionary.forEach(System.out::println);
                                 break;  //case1
                             case 2:
                                 System.out.println("Which dictionary do you want to use");
-                                listDictionary = Dictionary.showCurrentDictionaries(ALL_DICTIONARY_NAMES_PATH);
+                                listDictionary = Dictionary.showCurrentInformation(ALL_DICTIONARY_NAMES_PATH);
                                 listDictionary.forEach(System.out::println);
 
                                 System.out.print("Enter first language: ");

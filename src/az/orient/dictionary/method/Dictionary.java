@@ -137,7 +137,7 @@ public class Dictionary {
         }
     }
 
-    public static List<String> showCurrentDictionaries(String filePath) throws IOException {
+    public static List<String> showCurrentInformation(String filePath) throws IOException {
         List<String> listDictionary = new ArrayList<>();
         BufferedReader br = new BufferedReader(new FileReader(filePath));
         while (br.ready()) {
@@ -149,14 +149,5 @@ public class Dictionary {
 
     public static void createNewDictionary(String filePath) throws IOException {
         new FileWriter(filePath );
-    }
-
-    public static void showWords(String filePath) throws IOException {
-        BufferedReader br=new BufferedReader(new FileReader(filePath));
-        while (br.ready()){
-            String data=br.readLine();
-            System.out.println(data);
-        }
-
     }
 }
