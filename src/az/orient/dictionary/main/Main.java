@@ -35,11 +35,11 @@ public class Main {
         String result = "";
         String username, password, fromLanguage, toLanguage, firstWord, word, secondWord, filePath;
         int response;
-        List<String> listDictionary,listWords;
+        List<String> listDictionary, listWords;
         try {
             ExtraMethod.anonymousArray(new String[]{"Select the role", "1. Admin", "2. User"});
             switch (sc.nextInt()) {
-                case 1:
+                case 1 -> {
                     System.out.print("Enter username: ");
                     username = sc.next();
                     System.out.print("Enter password: ");
@@ -48,15 +48,15 @@ public class Main {
                         System.out.println();
                         System.out.println("Login successfully\n");
                         while (true) {
-                            System.out.print("1 To continue 2 To log out: ");
+                            System.out.print("1 To continue 2 To log out 3 To main args: ");
                             switch (sc.nextInt()) {
-                                case 1:
+                                case 1 -> {
                                     System.out.println();
                                     ExtraMethod.anonymousArray(new String[]{"Which one do you want to do", "1. Create new dictionary",
                                             "2. Add a new word to the dictionary", "3. Remove the word from dictionary",
                                             "4. Change the word in dictionary", "5. Create new Admin"});
                                     switch (sc.nextInt()) {
-                                        case 1:
+                                        case 1 -> {
                                             System.out.println("Current dictionaries in the file");
                                             listDictionary = Dictionary.showCurrentInformation(ALL_DICTIONARY_NAMES_PATH);
                                             listDictionary.forEach(System.out::println);
@@ -66,11 +66,11 @@ public class Main {
                                             fromLanguage = sc.next();
                                             System.out.print("Enter second language: ");
                                             toLanguage = sc.next();
-                                            filePath=fromLanguage + "_" + toLanguage+".txt";
+                                            filePath = fromLanguage + "_" + toLanguage + ".txt";
                                             Dictionary.createNewDictionary(filePath);
                                             Dictionary.writeLang(fromLanguage, toLanguage, ALL_DICTIONARY_NAMES_PATH);
-                                            break;  //case1
-                                        case 2:
+                                        }
+                                        case 2 -> {
                                             System.out.println("Current dictionaries in the file");
                                             listDictionary = Dictionary.showCurrentInformation(ALL_DICTIONARY_NAMES_PATH);
                                             listDictionary.forEach(System.out::println);
@@ -85,7 +85,7 @@ public class Main {
                                             if (response == 1) {
                                                 System.out.println();
                                                 System.out.println("Current words in dictionary");
-                                                listWords=Dictionary.showCurrentInformation(filePath);
+                                                listWords = Dictionary.showCurrentInformation(filePath);
                                                 listWords.forEach(System.out::println);
                                                 System.out.println();
                                                 System.out.print("Enter " + fromLanguage + " word: ");
@@ -99,8 +99,8 @@ public class Main {
                                             } else {
                                                 System.out.println("Error");
                                             }
-                                            break;  //case2
-                                        case 3:
+                                        }
+                                        case 3 -> {
                                             System.out.println("Which dictionary you want to remove the word from");
                                             listDictionary = Dictionary.showCurrentInformation(ALL_DICTIONARY_NAMES_PATH);
                                             listDictionary.forEach(System.out::println);
@@ -114,7 +114,7 @@ public class Main {
                                             if (response == 1) {
                                                 System.out.println();
                                                 System.out.println("Current words in dictionary");
-                                                listWords=Dictionary.showCurrentInformation(filePath);
+                                                listWords = Dictionary.showCurrentInformation(filePath);
                                                 listWords.forEach(System.out::println);
                                                 System.out.println();
                                                 System.out.print("Enter " + fromLanguage + " word: ");
@@ -125,8 +125,8 @@ public class Main {
                                             } else {
                                                 System.out.println("Error");
                                             }
-                                            break; //case3
-                                        case 4:
+                                        }
+                                        case 4 -> {
                                             System.out.println("Which dictionary you want to change the word from");
                                             listDictionary = Dictionary.showCurrentInformation(ALL_DICTIONARY_NAMES_PATH);
                                             listDictionary.forEach(System.out::println);
@@ -140,7 +140,7 @@ public class Main {
                                             if (response == 1) {
                                                 System.out.println();
                                                 System.out.println("Current words in dictionary");
-                                                listWords=Dictionary.showCurrentInformation(filePath);
+                                                listWords = Dictionary.showCurrentInformation(filePath);
                                                 listWords.forEach(System.out::println);
                                                 System.out.println();
                                                 System.out.print("Enter " + fromLanguage + " word: ");
@@ -153,23 +153,20 @@ public class Main {
                                             } else {
                                                 System.out.println("Error");
                                             }
-                                            break;  //case4
-                                        case 5:
+                                        }
+                                        case 5 -> {
                                             System.out.print("Enter username: ");
                                             username = sc.next();
                                             System.out.print("Enter password: ");
                                             password = sc.next();
                                             Login.register(username, password, ADMIN_LOGIN_PATH);
-                                            break; //case5
-                                        default:
-                                            System.out.println("Invalid number\n");
+                                        }
+                                        default -> System.out.println("Invalid number\n");
                                     }
-                                    break;   //case1
-                                case 2:
-                                    System.exit(0);
-                                    break;   //case2
-                                default:
-                                    System.out.println("Invalid number\n");
+                                }
+                                case 2 -> System.exit(0);
+                                case 3 -> main(args);
+                                default -> System.out.println("Invalid number\n");
                             }
                         }
                     } else {
@@ -184,20 +181,19 @@ public class Main {
                             System.exit(0);
                         }
                     }
-                    break;  //case1
-
-                case 2:
+                }
+                case 2 -> {
                     while (true) {
                         System.out.println();
                         ExtraMethod.anonymousArray(new String[]{"Which one do you want to do", "1. View the current dictionaries in the system",
-                                "2. Search the word in the current dictionary", "3. To log out"});
+                                "2. Search the word in the current dictionary", "3. To log out 4. To main args"});
                         switch (sc.nextInt()) {
-                            case 1:
+                            case 1 -> {
                                 System.out.println("Current dictionaries in the file");
                                 listDictionary = Dictionary.showCurrentInformation(ALL_DICTIONARY_NAMES_PATH);
                                 listDictionary.forEach(System.out::println);
-                                break;  //case1
-                            case 2:
+                            }
+                            case 2 -> {
                                 System.out.println("Which dictionary do you want to use");
                                 listDictionary = Dictionary.showCurrentInformation(ALL_DICTIONARY_NAMES_PATH);
                                 listDictionary.forEach(System.out::println);
@@ -211,18 +207,17 @@ public class Main {
                                 if (response == 1) {
                                     System.out.println("Which language you want to search by\n1. " + fromLanguage + "\n2. " + toLanguage);
                                     switch (sc.nextInt()) {
-                                        case 1:
+                                        case 1 -> {
                                             System.out.print("Enter the " + fromLanguage + " word: ");
                                             secondWord = sc.next();
                                             result = "Translation: " + Dictionary.translate(secondWord, filePath, 1);
-                                            break;   //case1
-                                        case 2:
+                                        }
+                                        case 2 -> {
                                             System.out.print("Enter the " + toLanguage + " word: ");
                                             firstWord = sc.next();
                                             result = "Translation: " + Dictionary.translate(firstWord, filePath, 2);
-                                            break;   //case2
-                                        default:
-                                            result = "Invalid dictionary type";
+                                        }
+                                        default -> result = "Invalid dictionary type";
                                     }
                                     System.out.println(result);
                                 } else if (response == 2) {
@@ -230,17 +225,17 @@ public class Main {
                                 } else {
                                     System.out.println("Error");
                                 }
-                                break;   //case2
-                            case 3:
-                                System.exit(0);
-                                break;  //case3
-                            default:
-                                System.out.println("Invalid choose\n");
+                            }
+                            case 3 -> System.exit(0);
+                            case 4 -> main(args);
+                            default -> System.out.println("Invalid choose\n");
                         }
                     }
-                default:
+                }
+                default -> {
                     System.out.println("Invalid role\n");
                     main(args);
+                }
             }
         } catch (IOException ex) {
             ex.printStackTrace();
